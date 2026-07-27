@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dave's Website</title>
+  <title>RateScout — Compare Home Insurance Rates in 2 Minutes</title>
+  <meta name="description" content="See how much homeowners like you are saving on home insurance. Compare rates from 40+ carriers, free, no calls." />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -67,6 +68,7 @@
       display: flex;
       gap: 2.5rem;
       list-style: none;
+      align-items: center;
     }
 
     .nav-links a {
@@ -80,6 +82,18 @@
     }
 
     .nav-links a:hover { color: var(--ink); }
+
+    .nav-trust {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: normal;
+      text-transform: none;
+    }
+
+    .nav-trust strong { color: var(--ink); }
 
     .nav-cta {
       background: var(--ink);
@@ -149,7 +163,13 @@
       color: var(--muted);
       line-height: 1.7;
       max-width: 460px;
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-note {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
     }
 
     .btn-primary {
@@ -256,7 +276,7 @@
 
     .offer-btn:hover { background: var(--gold-light); color: var(--ink); }
 
-    /* ── SERVICES ── */
+    /* ── SERVICES / HOW IT WORKS ── */
     .section {
       padding: 6rem 4rem;
       position: relative;
@@ -330,7 +350,7 @@
       font-weight: 300;
     }
 
-    /* ── TESTIMONIAL ── */
+    /* ── TESTIMONIAL / STATS ── */
     .testimonial-section {
       background: var(--ink);
       color: var(--cream);
@@ -407,7 +427,7 @@
       letter-spacing: 0.06em;
     }
 
-    /* ── CTA SECTION ── */
+    /* ── CTA SECTION (rate comparison, replaces contact form) ── */
     .cta-section {
       padding: 6rem 4rem;
       display: grid;
@@ -419,89 +439,142 @@
       border-top: 1px solid var(--border);
     }
 
-    .cta-form {
+    .rate-card {
       background: var(--white);
       border: 1px solid var(--border);
       padding: 2.5rem;
     }
 
-    .form-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      font-weight: 700;
+    .rate-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.8rem;
+    }
+
+    .rate-card-head span {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .live-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .live-dot::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse 2s infinite;
+    }
+
+    .rate-compare {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .rate-block { text-align: center; }
+
+    .rate-block .label {
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
       margin-bottom: 0.5rem;
     }
 
-    .form-sub {
-      font-size: 0.88rem;
-      color: var(--muted);
-      margin-bottom: 1.8rem;
-      font-weight: 300;
+    .rate-block .amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      line-height: 1;
     }
 
-    .form-group {
+    .rate-block.old .amount { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--border); }
+    .rate-block.new .amount { color: var(--gold); font-size: 2.2rem; }
+
+    .rate-arrow {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .savings-pill {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: var(--ink);
+      color: var(--gold-light);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding: 0.9rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .rate-card-cta {
+      display: block;
+      text-align: center;
+      background: var(--gold);
+      color: var(--white);
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 1rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background 0.2s;
       margin-bottom: 1rem;
     }
 
-    .form-group label {
-      display: block;
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+    .rate-card-cta:hover { background: var(--ink); }
+
+    .rate-card-foot {
+      font-size: 0.76rem;
       color: var(--muted);
-      margin-bottom: 0.4rem;
+      text-align: center;
+      line-height: 1.6;
     }
 
-    .form-group input, .form-group textarea {
-      width: 100%;
-      padding: 0.85rem 1rem;
-      border: 1px solid var(--border);
-      background: var(--cream);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
-      color: var(--ink);
-      outline: none;
-      transition: border-color 0.2s;
-      border-radius: 2px;
-      resize: vertical;
+    @keyframes pulse {
+      0%, 100% { opacity: 1; } 50% { opacity: 0.3; }
     }
-
-    .form-group input:focus, .form-group textarea:focus {
-      border-color: var(--gold);
-      background: var(--white);
-    }
-
-    .form-submit {
-      width: 100%;
-      background: var(--gold);
-      color: var(--white);
-      border: none;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.88rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 1rem;
-      cursor: pointer;
-      border-radius: 2px;
-      transition: background 0.2s;
-      margin-top: 0.5rem;
-    }
-
-    .form-submit:hover { background: var(--ink); }
 
     /* ── FOOTER ── */
     footer {
       background: var(--ink);
       color: var(--cream);
       padding: 3rem 4rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       position: relative;
       z-index: 1;
       border-top: 3px solid var(--gold);
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
 
     .footer-logo {
@@ -521,6 +594,14 @@
     }
 
     .footer-contact a:hover { color: var(--gold); }
+
+    .disclosure {
+      font-size: 0.76rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 900px;
+      margin-bottom: 1.2rem;
+    }
 
     .footer-copy {
       font-size: 0.78rem;
@@ -552,20 +633,21 @@
       .testimonial-section { padding: 4rem 1.5rem; }
       .testimonial-grid { grid-template-columns: 1fr; gap: 2rem; }
       .cta-section { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 1.5rem; }
-      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+      .footer-top { flex-direction: column; text-align: center; }
+      footer { text-align: center; padding: 2rem 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- NAV: minimal on purpose — one job, one exit path -->
   <nav>
-    <a href="#" class="nav-logo">Dave<span>.</span></a>
+    <a href="#" class="nav-logo">RateScout<span>.</span></a>
     <ul class="nav-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#contact" class="nav-cta">Get Started</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#about">Reviews</a></li>
+      <li class="nav-trust">★★★★★ <strong>4.8/5</strong> · 12,400+ homeowners</li>
+      <li><a href="#" class="nav-cta js-cta">Get My Rate</a></li>
     </ul>
   </nav>
 
@@ -573,46 +655,47 @@
   <section class="hero">
     <div class="hero-bg-line"></div>
     <div class="hero-content">
-      <span class="hero-label">Welcome</span>
-      <h1>Serious Work.<br><em>Serious Results.</em></h1>
+      <span class="hero-label">Free · 2 Minutes</span>
+      <h1>Stop <em>Overpaying</em><br>For Home Insurance.</h1>
       <p class="hero-sub">
-        We deliver premium services with the expertise and dedication you deserve. 
-        Let's build something exceptional together.
+        Answer a few quick questions and see how much homeowners in your area are saving by switching.
+        We compare rates from 40+ top-rated carriers — you pick the one that works.
       </p>
-      <a href="#contact" class="btn-primary">Claim Your Free Consultation</a>
-      <a href="#services" class="btn-secondary">See What We Offer</a>
+      <p class="hero-note">No calls until you ask for one. No credit check. No obligation.</p>
+      <a href="#" class="btn-primary js-cta">Claim Your Free Rate Check</a>
+      <a href="#how-it-works" class="btn-secondary">See How It Works</a>
     </div>
     <div class="hero-image">
-      <div class="hero-monogram">D</div>
+      <div class="hero-monogram">R</div>
     </div>
   </section>
 
   <!-- OFFER BANNER -->
   <div class="offer-banner">
-    <p>🎁 <strong>Limited Time Offer:</strong> Get a free strategy session when you reach out this month — no strings attached.</p>
-    <a href="#contact" class="offer-btn">Claim Offer</a>
+    <p>🎁 <strong>Limited Time:</strong> Compare your rate free this month — homeowners save an average of $482/year.</p>
+    <a href="#" class="offer-btn js-cta">Get My Rate</a>
   </div>
 
-  <!-- SERVICES -->
-  <section class="section" id="services">
-    <p class="section-label">What We Do</p>
-    <h2 class="section-title">Services Built<br>Around You</h2>
-    <p class="section-sub">Every engagement is tailored to your goals. Here's how we can help.</p>
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how-it-works">
+    <p class="section-label">How It Works</p>
+    <h2 class="section-title">Three Steps.<br>About Two Minutes.</h2>
+    <p class="section-sub">No phone calls until you ask for one. No pressure. Just your options, side by side.</p>
     <div class="services-grid">
       <div class="service-card">
         <span class="service-number">01</span>
-        <h3 class="service-title">Strategy & Planning</h3>
-        <p class="service-desc">We map out a clear path from where you are to where you want to be — with milestones that actually make sense.</p>
+        <h3 class="service-title">Answer a Few Questions</h3>
+        <p class="service-desc">Your home's basics — location, age, coverage you currently carry. Takes about two minutes.</p>
       </div>
       <div class="service-card">
         <span class="service-number">02</span>
-        <h3 class="service-title">Execution & Delivery</h3>
-        <p class="service-desc">Plans don't mean much without action. We roll up our sleeves and deliver results you can measure.</p>
+        <h3 class="service-title">We Match You With Carriers</h3>
+        <p class="service-desc">We check your answers against 40+ carriers and surface the ones offering you the best rate.</p>
       </div>
       <div class="service-card">
         <span class="service-number">03</span>
-        <h3 class="service-title">Ongoing Support</h3>
-        <p class="service-desc">We don't disappear after the handoff. Our team stays engaged to make sure you keep moving forward.</p>
+        <h3 class="service-title">Pick Your Rate & Save</h3>
+        <p class="service-desc">Compare side by side. If one looks better than what you're paying now, switch. If not, walk away — free either way.</p>
       </div>
     </div>
   </section>
@@ -621,70 +704,97 @@
   <section class="testimonial-section" id="about">
     <div class="testimonial-grid">
       <div>
-        <p class="testimonial-quote">"Working with Dave changed the way we approach every project. The results speak for themselves."</p>
-        <p class="testimonial-author">— A Satisfied Client, <span>Valued Customer</span></p>
+        <p class="testimonial-quote">"I'd been with the same insurer for six years and never thought to check. Switched and I'm saving about $50 a month."</p>
+        <p class="testimonial-author">— Homeowner, <span>Ohio</span></p>
       </div>
       <div class="testimonial-stats">
         <div class="stat-box">
-          <div class="stat-number">98%</div>
-          <div class="stat-label">Client Satisfaction Rate</div>
+          <div class="stat-number">4.8/5</div>
+          <div class="stat-label">Average Homeowner Rating</div>
         </div>
         <div class="stat-box">
-          <div class="stat-number">10+</div>
-          <div class="stat-label">Years of Experience</div>
+          <div class="stat-number">40+</div>
+          <div class="stat-label">Carriers Compared</div>
         </div>
         <div class="stat-box">
-          <div class="stat-number">200+</div>
-          <div class="stat-label">Projects Completed</div>
+          <div class="stat-number">12,400+</div>
+          <div class="stat-label">Homeowners Matched</div>
         </div>
         <div class="stat-box">
-          <div class="stat-number">24h</div>
-          <div class="stat-label">Response Guarantee</div>
+          <div class="stat-number">$482</div>
+          <div class="stat-label">Avg. Annual Savings</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA / CONTACT -->
+  <!-- CTA / RATE COMPARISON -->
   <section class="cta-section" id="contact">
     <div>
-      <p class="section-label">Let's Talk</p>
-      <h2 class="section-title">Ready to Take<br>the Next Step?</h2>
+      <p class="section-label">See Your Rate</p>
+      <h2 class="section-title">Ready to Check<br>Your Rate?</h2>
       <p class="section-sub">
-        Fill out the form and we'll get back to you within 24 hours. 
-        There's no commitment — just a conversation.
+        It takes about two minutes, and there's no cost or obligation to switch.
+        Compare your current rate against 40+ carriers and see where you land.
       </p>
       <p style="font-size:0.88rem; color:var(--muted); margin-top:1rem;">
-        📧 <a href="mailto:support@yourdomain.com" style="color:var(--gold); text-decoration:none;">support@yourdomain.com</a>
+        📧 <a href="mailto:hello@ratescout.example" style="color:var(--gold); text-decoration:none;">hello@ratescout.example</a>
       </p>
     </div>
-    <div class="cta-form">
-      <h3 class="form-title">Get in Touch</h3>
-      <p class="form-sub">We respond to every message within one business day.</p>
-      <div class="form-group">
-        <label>Your Name</label>
-        <input type="text" placeholder="John Smith" />
+    <div class="rate-card">
+      <div class="rate-card-head">
+        <span>Sample Comparison</span>
+        <span class="live-dot">Updated Today</span>
       </div>
-      <div class="form-group">
-        <label>Email Address</label>
-        <input type="email" placeholder="john@example.com" />
+      <div class="rate-compare">
+        <div class="rate-block old">
+          <div class="label">Typical Rate</div>
+          <div class="amount">$186<span style="font-size:0.9rem;">/mo</span></div>
+        </div>
+        <div class="rate-arrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#b8922a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="rate-block new">
+          <div class="label">With RateScout</div>
+          <div class="amount">$131<span style="font-size:0.9rem;">/mo</span></div>
+        </div>
       </div>
-      <div class="form-group">
-        <label>How Can We Help?</label>
-        <textarea rows="4" placeholder="Tell us a bit about what you're looking for..."></textarea>
-      </div>
-      <button class="form-submit">Send Message →</button>
+      <div class="savings-pill">Save an average of $660/year</div>
+      <a href="#" class="rate-card-cta js-cta">Compare My Rate →</a>
+      <p class="rate-card-foot">Based on quotes compared by RateScout users in the last 30 days. Free, no credit check, no obligation.</p>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-logo">Dave<span>.</span></div>
-    <div class="footer-contact">
-      <a href="mailto:support@yourdomain.com">support@yourdomain.com</a>
+    <div class="footer-top">
+      <div class="footer-logo">RateScout<span>.</span></div>
+      <div class="footer-contact">
+        <a href="mailto:hello@ratescout.example">hello@ratescout.example</a>
+      </div>
     </div>
-    <div class="footer-copy">© 2026 Dave's Website. All rights reserved.</div>
+    <p class="disclosure">
+      RateScout is an independent marketing and comparison service. We are not an insurance company and do not issue policies.
+      When you request a comparison, we may share your information with our licensed carrier and agency partners, and we may
+      receive compensation if you obtain a quote or purchase a policy through one of them. Rates and savings shown are
+      illustrative averages based on past user activity and are not a guarantee of your individual rate. Available carriers
+      and offers vary by state and eligibility.
+    </p>
+    <div class="footer-copy">© 2026 RateScout. All rights reserved.</div>
   </footer>
+
+  <script>
+    // ============================================================
+    // CONFIG — point this at your real CPA offer / affiliate link.
+    // ============================================================
+    const AFFILIATE_URL = "https://your-offer-link.example.com";
+
+    document.querySelectorAll('.js-cta').forEach(el => {
+      el.setAttribute('href', AFFILIATE_URL);
+      el.setAttribute('target', '_blank');
+      el.setAttribute('rel', 'noopener sponsored');
+    });
+  </script>
 
 </body>
 </html>
